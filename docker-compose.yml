@@ -1,0 +1,42 @@
+version: '2'
+services:
+  web:
+    build: ./apache/
+    # Environment variables
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - mysql
+    volumes:
+      - ./data/www:/var/www
+    working_dir: /var/www
+    environment:
+      - DEBUG=false
+      - TIMEZONE="Europe/Madrid"
+      - MEMORY_LIMIT=128M
+      - UPLOAD_MAX_FILESIZE=2M
+      - POST_MAX_SIZE=8M
+  mysql:
+    image: mysql:latest
+    volumes_from:
+        - data
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: drupal
+        MYSQL_USER: drupal
+        MYSQL_PASSWORD: drupal
+
+  data:
+    image: mysql:latest
+    volumes:
+        - /var/lib/mysql
+    command: "true"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
