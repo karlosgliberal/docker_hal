@@ -14,11 +14,7 @@ rm -f /var/run/apache2/apache2.pid
 
 ### Default set production
 # xdebug
-if [[ $DEBUG && $DEBUG = 'true' ]]; then
-  cp /etc/php/7.0/apache2/php.ini-production /etc/php/7.0/apache2/php.ini
-else
-  rm /etc/php/7.0/apache2/conf.d/20-xdebug.ini
-fi
+cp /etc/php/7.0/apache2/php.ini-development /etc/php/7.0/apache2/php.ini
 
 # date.timezone
 if [[ $TIMEZONE != "" ]]; then

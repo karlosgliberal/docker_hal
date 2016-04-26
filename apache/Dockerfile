@@ -34,7 +34,10 @@ RUN apt-get -yqq install \
   patch \
   rsync \
   vim \
-  openssh-client
+  openssh-client \
+  git-core \
+  zsh \
+  mysql-client
 
 # Configure Dotdeb sources
 RUN \
@@ -68,6 +71,7 @@ RUN apt-get -yqq install php7.0-apcu
 # Install memcached service
 RUN apt-get -yqq install memcached php7.0-memcached
 
+
 #
 # Step 2: Configuration
 #
@@ -78,11 +82,9 @@ RUN apt-get -yqq install memcached php7.0-memcached
 
 # Development
 RUN apt-get -yqq install php7.0-xdebug
-COPY config/php7/20-xdebug.ini /etc/php/mods-available/xdebug.ini
 COPY config/php7/php.ini-development /etc/php/7.0/apache2/php.ini-development
 # Production
 COPY config/php7/php.ini-production /etc/php/7.0/apache2/php.ini
-
 
 # Add apache vhosts
 ADD config/vhosts/*.conf /etc/apache2/sites-available/
@@ -186,6 +188,12 @@ VOLUME /var/www
 RUN usermod -u 1000 www-data
 
 COPY scripts/apache2-foreground /usr/bin/
+
+RUN composer create-project drupal-composer/drupal-project:8.x-dev /var/www/unicef --stability dev --no-interaction
+#RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+#      && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
+#      && chsh -s /bin/zsh
+
 
 EXPOSE 80 443
 
