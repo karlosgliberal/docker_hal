@@ -189,7 +189,7 @@ RUN usermod -u 1000 www-data
 
 COPY scripts/apache2-foreground /usr/bin/
 
-RUN composer create-project drupal-composer/drupal-project:8.x-dev /var/www/unicef --stability dev --no-interaction
+#RUN composer create-project drupal-composer/drupal-project:8.x-dev /var/www/unicef --stability dev --no-interaction
 #RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
 #      && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
 #      && chsh -s /bin/zsh

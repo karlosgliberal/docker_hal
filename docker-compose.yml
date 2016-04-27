@@ -13,6 +13,7 @@ services:
       - ./data/www:/var/www
     working_dir: /var/www
     environment:
+      - DEGUB = FALSE
       - TIMEZONE="Europe/Madrid"
       - MEMORY_LIMIT=128M
       - UPLOAD_MAX_FILESIZE=2M
@@ -26,7 +27,7 @@ services:
     environment:
       PMA_HOST: mysql
   mysql:
-    image: mysql:latest
+    image: mysql:5.5
     volumes_from:
         - data
     environment:
@@ -35,7 +36,7 @@ services:
         MYSQL_USER: drupal
         MYSQL_PASSWORD: drupal
   data:
-    image: mysql:latest
+    image: mysql:5.5
     volumes:
         - /var/lib/mysql
     command: "true"
