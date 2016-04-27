@@ -74,6 +74,7 @@ Modificamos el fichecro con sudo  _/etc/hosts_ new site _name_ con la ip que nos
 
 `sudo echo "ip unicef.local" >> /etc/hosts`
 
+
 ## Apagar el entorno ##
 
 `$ docker-compose down`

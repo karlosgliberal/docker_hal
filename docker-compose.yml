@@ -32,9 +32,9 @@ services:
         - data
     environment:
         MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: drupal
-        MYSQL_USER: drupal
-        MYSQL_PASSWORD: drupal
+        MYSQL_DATABASE: dev8
+        MYSQL_USER: dev8
+        MYSQL_PASSWORD: dev8
   data:
     image: mysql:5.5
     volumes:
