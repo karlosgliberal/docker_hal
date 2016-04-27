@@ -82,7 +82,7 @@ RUN apt-get -yqq install memcached php7.0-memcached
 
 # Development
 RUN apt-get -yqq install php7.0-xdebug
-COPY config/php7/php.ini-development /etc/php/7.0/apache2/php.ini-development
+#COPY config/php7/php.ini-development /etc/php/7.0/apache2/php.ini-development
 # Production
 COPY config/php7/php.ini-production /etc/php/7.0/apache2/php.ini
 

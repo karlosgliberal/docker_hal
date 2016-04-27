@@ -1,6 +1,6 @@
 #Docker base para trabajar con drupal 8#
 
-Este docker es una modificación del doker de [@keopx](https://github.com/keopx) es una primera versión basíca de trabajo.
+Este docker es una modificación del doker de [@keopx](https://github.com/keopx) es una primera versión básica de trabajo.
 
 Esta pensada para trabajar tanto en OSX como en Gnu/linux
 
