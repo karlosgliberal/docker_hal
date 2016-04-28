@@ -18,6 +18,15 @@ services:
       - MEMORY_LIMIT=128M
       - UPLOAD_MAX_FILESIZE=2M
       - POST_MAX_SIZE=8M
+  mysql:
+    build: ./mysql
+    volumes:
+      - ./data/database:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: dev8
+        MYSQL_USER: dev8
+        MYSQL_PASSWORD: dev8
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -26,17 +35,3 @@ services:
       - mysql
     environment:
       PMA_HOST: mysql
-  mysql:
-    image: mysql:5.5
-    volumes_from:
-        - data
-    environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: dev8
-        MYSQL_USER: dev8
-        MYSQL_PASSWORD: dev8
-  data:
-    image: mysql:5.5
-    volumes:
-        - /var/lib/mysql
-    command: "true"
