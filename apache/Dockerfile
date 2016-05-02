@@ -1,5 +1,9 @@
 FROM debian:jessie
 
+
+RUN usermod -u 1000 www-data
+RUN usermod -a -G users www-data
+RUN chown -R www-data:www-data /var/www
 MAINTAINER keopx <keopx@keopx.net>
 
 #
@@ -186,6 +190,10 @@ WORKDIR /var/www
 # Volume for Apache2 data
 VOLUME /var/www
 RUN usermod -u 1000 www-data
+RUN usermod -u 1000 www-data
+RUN usermod -a -G users www-data
+RUN chown -R www-data:www-data /var/www
+
 
 COPY scripts/apache2-foreground /usr/bin/
 
